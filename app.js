@@ -5,46 +5,25 @@ const app = express();
 const port = 3000;
 
 app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function (req, res) {
+    var options = { 
+        weekday: "long", 
+        day: "numeric", 
+        month: "long"
+    }
   var today = new Date();
-  var dayName = getDateName(today.getDay());
+  var dayName = today.toLocaleDateString("en-US", options);
 
   res.render("list", { dayName: dayName });
 });
 
+app.post("/", function(req) {
+    var newListItem = req.body.newListItem;
+    console.log(newListItem); 
+})
+
 app.listen(port, function () {
   console.log("Server is listening on port " + port);
 });
-
-function getDateName(dayInt) {
-  var output = "";
-
-  switch (dayInt) {
-    case 0:
-      output = "Sunday";
-      break;
-    case 1:
-      output = "Monday";
-      break;
-    case 2:
-      output = "Tuesday";
-      break;
-    case 3:
-      output = "Wednesday";
-      break;
-    case 4:
-      output = "Thursday";
-      break;
-    case 5:
-      output = "Friday";
-      break;
-    case 6:
-      output = "Saturday";
-      break;
-    default:
-      console.log("Error: current day is equal to` " + dayInt);
-      break;
-  }
-  return output;
-}

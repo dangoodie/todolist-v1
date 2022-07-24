@@ -7,7 +7,18 @@
     <title>To Do List</title>
 </head>
 <body>
-    <h1>It's a <%= dayName %>!</h1>
+       
+    <h1> <%= dayName %> </h1>
+
+    <ul>
+        <li>Buy Food</li>
+        <li>Cook Food</li>
+        <li>Eat Food</li>
+    </ul>
+    <form action="/" method="post">
+        <input type="text" name="newListItem" id="newListItem">
+        <button type="submit">Submit</button>
+    </form>
     
 </body>
 </html>
