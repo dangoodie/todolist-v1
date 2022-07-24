@@ -8,9 +8,9 @@ app.set("view engine", "ejs");
 
 app.get("/", function (req, res) {
   var today = new Date();
-  var day = getDateName(today.getDay());
+  var dayName = getDateName(today.getDay());
 
-  res.render("list", { kindOfDay: day });
+  res.render("list", { dayName: dayName });
 });
 
 app.listen(port, function () {
@@ -43,7 +43,7 @@ function getDateName(dayInt) {
       output = "Saturday";
       break;
     default:
-      console.log("Error: current day is equal to: " + dayInt);
+      console.log("Error: current day is equal to` " + dayInt);
       break;
   }
   return output;
