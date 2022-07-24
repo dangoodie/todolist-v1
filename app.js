@@ -38,11 +38,9 @@ app.get("/work", function (req, res) {
   res.render("list", { listTitle: "Work List", items: workItems });
 });
 
-app.post("/work", function (req, res) {
-  let item = req.body.item;
-  workItems.push(item);
-  res.redirect("/work");
-});
+app.get("/about", function (req, res){
+    res.render("about");
+}) 
 
 app.listen(port, function () {
   console.log("Server is listening on port " + port);
